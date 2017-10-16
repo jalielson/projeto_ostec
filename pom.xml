@@ -6,12 +6,12 @@
     
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.senac.rn.lojarapida</groupId>
-    <artifactId>lojarapida</artifactId>
+    <groupId>os.tec</groupId>
+    <artifactId>ostec</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>lojarapida</name>
+    <name>ostec</name>
     
     <dependencies>
         

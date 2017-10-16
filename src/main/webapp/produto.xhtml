@@ -3,7 +3,8 @@
 <html 
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Produto</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
@@ -11,12 +12,22 @@
         <h:outputScript library="js" name="jquery-3.2.1.min.js" />
     </h:head>
     <h:body>
+        <div align="center">
+            <img src="resources/images/ostec.jpg" alt="logo" style="width:522px;height:112px;" />
+        </div>        
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="index.xhtml" />
+            <p:menuitem value="Produto" url="produto.xhtml" />
+            <p:menuitem value="Categoria" url="categoria.xhtml" />
+            <p:menuitem value="Orçamento" url="orcamento.xhtml" />
+            <p:menuitem value="Sexo" url="sexo.xhtml" />
+            <p:menuitem value="Cliente" url="cliente.xhtml" />
+        </p:breadCrumb>        
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h:form id="formCadastroProduto">
-                        <fieldset>
-                            <legend>Dados do Produto</legend>
+                        <p:fieldset legend="Dados do produto">                            
                             <div class="form-group">
                                 <h:outputLabel for="nome" value="Nome" />
                                 <h:inputText id="nome" value="#{produtoBean.produto.nome}" styleClass="form-control" />
@@ -38,16 +49,13 @@
                                     <f:convertNumber minFractionDigits="2" />
                                 </h:inputText>
                             </div>
-                            <h:commandButton value="Salvar" action="#{produtoBean.salvar}" styleClass="btn btn-primary btn-block">
-                                <f:ajax execute="@form" render="@form :formListaProdutos" />
-                            </h:commandButton>
-                        </fieldset>
+                            <p:commandButton value="Salvar" action="#{produtoBean.salvar}" styleClass="btn btn-success btn-lg" process="@form" update="@all" />                                                        
+                        </p:fieldset>
                     </h:form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <h:form id="formListaProdutos">
-                        <fieldset>
-                            <legend>Lista de Produtos</legend>
+                        <p:fieldset legend="Relação de Produtos">                            
                             <h:dataTable id="tabelaProdutos" value="#{produtoBean.produtos}" var="produto" styleClass="table table-striped table-hover">
                                 <h:column>
                                     <f:facet name="header">Id</f:facet>
@@ -68,17 +76,13 @@
                                     </h:outputText>
                                 </h:column>
                                 <h:column>
-                                    <h:commandButton value="editar" action="#{produtoBean.editar(produto)}" styleClass="btn btn-success btn-block">
-                                        <f:ajax execute="@form" render="@all" />
-                                    </h:commandButton>
+                                    <p:commandButton value="editar" action="#{produtoBean.editar(produto)}" styleClass="btn btn-success btn-block" process="@form" update="@all" />                                                                            
                                 </h:column>
                                 <h:column>
-                                    <h:commandButton value="excluir" action="#{produtoBean.excluir(produto)}" styleClass="btn btn-danger btn-block">
-                                        <f:ajax execute="@form" render="@form" />
-                                    </h:commandButton>
+                                    <p:commandButton value="excluir" action="#{produtoBean.excluir(produto)}" styleClass="btn btn-danger btn-block" process="@form" update="@all" />                                    
                                 </h:column>
                             </h:dataTable>
-                        </fieldset>
+                        </p:fieldset>
                     </h:form>
                 </div>
             </div>
